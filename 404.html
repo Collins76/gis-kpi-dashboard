@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirecting...</title>
+    <script>
+        // Get the correct origin (domain) for your site
+        const targetUrl = new URL("https://your-username.github.io/repo-name/");
+        const currentPath = window.location.pathname;
+        const currentSearch = window.location.search;
+        const currentHash = window.location.hash;
+
+        // 1. First, try to redirect to the root. This is the safest bet for an SPA.
+        window.location.href = targetUrl.origin + '/';
+
+        // Optional more advanced logic:
+        // If you want to preserve the path the user was trying to access for your SPA's router, use this:
+        // window.location.href = targetUrl.origin + '/#' + currentPath; // For Hash Router
+        // window.location.href = targetUrl.origin + currentPath; // For Browser Router (requires server support, which is what we're trying to solve!)
+    </script>
+</head>
+<body>
+    <p>Page not found. Redirecting to the homepage...</p>
+</body>
+</html>
