@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ikeja Electric GIS KPI Dashboard - Login</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="min-h-screen font-space">
+    <!-- Enhanced Scrolling Text with Glow Dark Background -->
+    <div class="scrolling-text-container overflow-hidden relative">
+        <div class="animate-scroll whitespace-nowrap">
+            <span class="inline-block px-6 py-3 scrolling-text-content">
+                This GIS KPI Dashboard was designed by Collins Anyanwu - A Guru in GIS, Data Engineering/Analytics and Data Science 🚀 Expert in Geospatial Technologies, Advanced Analytics, and Business Intelligence Solutions.
+            </span>
+            <span class="inline-block px-6 py-3 scrolling-text-content">
+                This GIS KPI Dashboard was designed by Collins Anyanwu - A Guru in GIS, Data Engineering/Analytics and Data Science 🚀 Expert in Geospatial Technologies, Advanced Analytics, and Business Intelligence Solutions.
+            </span>
+        </div>
+    </div>
+
+    <!-- Login Container -->
+    <div class="flex items-center justify-center min-h-[calc(100vh-48px)]">
+        <div class="glow-container p-8 w-full max-w-md mx-4 relative z-10">
+            <!-- Logo and Title -->
+            <div class="text-center mb-8">
+                <div class="flex justify-center items-center mb-4">
+                    <div class="relative">
+                        <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg relative overflow-hidden" style="animation: pulseGlow 2s ease infinite;">
+                            <i class="fas fa-bolt text-white text-4xl" style="animation: float 3s ease infinite;"></i>
+                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20" style="animation: sweep 3s linear infinite;"></div>
+                        </div>
+                        <div class="absolute -bottom-1 -right-1 w-8 h-8 bg-green-400 rounded-full flex items-center justify-center" style="animation: pulseGlow 1.5s ease infinite;">
+                            <i class="fas fa-check text-white text-sm"></i>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="text-4xl font-bold text-white mb-2 font-orbitron" style="animation: neonGlow 2s ease infinite;">Ikeja Electric Plc</h1>
+                <p class="text-yellow-400 text-sm font-rajdhani tracking-wide">⚡ GIS KPI Dashboard ⚡</p>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="space-y-6">
+                <!-- Gmail Input -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-300 mb-2">
+                        <i class="fab fa-google mr-2 text-red-500"></i>Gmail Account
+                    </label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required
+                        pattern="[a-z0-9._%+-]+@gmail\.com$"
+                        placeholder="yourname@gmail.com"
+                        class="glow-input w-full"
+                    >
+                    <p class="mt-1 text-xs text-gray-500">Only Gmail accounts are allowed</p>
+                </div>
+
+                <!-- Full Name Input -->
+                <div>
+                    <label for="fullname" class="block text-sm font-medium text-gray-300 mb-2">
+                        <i class="fas fa-user mr-2 text-blue-500"></i>Full Name
+                    </label>
+                    <input 
+                        type="text" 
+                        id="fullname" 
+                        name="fullname" 
+                        required
+                        placeholder="Enter your full name"
+                        class="glow-input w-full"
+                    >
+                </div>
+
+                <!-- Location Dropdown -->
+                <div>
+                    <label for="location" class="block text-sm font-medium text-gray-300 mb-2">
+                        <i class="fas fa-map-marker-alt mr-2 text-green-500"></i>Location
+                    </label>
+                    <select 
+                        id="location" 
+                        name="location" 
+                        required
+                        class="glow-input w-full"
+                        style="background: #000000; color: white;"
+                    >
+                        <option value="" style="background: #000000; color: white;">Select your location</option>
+                        <option value="CHQ" style="background: #000000; color: white;">CHQ</option>
+                        <option value="Akowonjo BU" style="background: #000000; color: white;">Akowonjo BU</option>
+                        <option value="Abule Egba BU" style="background: #000000; color: white;">Abule Egba BU</option>
+                        <option value="Ikeja BU" style="background: #000000; color: white;">Ikeja BU</option>
+                        <option value="Ikorodu BU" style="background: #000000; color: white;">Ikorodu BU</option>
+                        <option value="Oshodi BU">Oshodi BU</option>
+                        <option value="Shomolu BU" style="background: #000000; color: white;">Shomolu BU</option>
+                    </select>
+                </div>
+
+                <!-- Submit Button -->
+                <button 
+                    type="submit"
+                    class="glow-button w-full text-lg"
+                >
+                    <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                </button>
+            </form>
+
+            <!-- Footer -->
+            <div class="mt-8 text-center">
+                <p class="text-gray-500 text-xs">
+                    © 2025 Ikeja Electric Plc. All rights reserved.
+                </p>
+                <p class="text-gray-600 text-xs mt-2">
+                    <i class="fas fa-shield-alt mr-1 text-green-500"></i>
+                    Secure Login System
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>
