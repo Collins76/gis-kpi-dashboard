@@ -33,6 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
 function displayUserInfo() {
     document.getElementById('userName').textContent = currentUser.fullname;
     document.getElementById('userLocation').textContent = currentUser.location;
+    
+    // Load and display profile photo if exists
+    updateHeaderProfilePhoto();
 }
 
 // 🕐 Enhanced Digital Clock with Calendar
@@ -1674,8 +1677,8 @@ function showUserProfile() {
     modal.innerHTML = `
         <div class="glow-modal w-full max-w-md p-6 m-4">
             <div class="text-center mb-6">
-                <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-2xl" style="animation: pulseGlow 2s ease infinite;">
-                    <i class="fas fa-user-tie text-white text-3xl"></i>
+                <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-2xl overflow-hidden" style="animation: pulseGlow 2s ease infinite;">
+                    ${getUserProfilePhoto() || '<i class="fas fa-user-tie text-white text-3xl"></i>'}
                 </div>
                 <h3 class="text-2xl font-bold text-white font-orbitron glow-text-blue mb-2">${currentUser.fullname}</h3>
                 <p class="text-yellow-400 font-rajdhani text-lg">
@@ -1728,7 +1731,86 @@ function showUserProfile() {
 }
 
 function editProfile() {
-    showNotification('Profile editing functionality will be implemented', 'info');
+    // Close the current profile modal first
+    const existingModal = document.querySelector('.fixed.inset-0');
+    if (existingModal) {
+        existingModal.remove();
+    }
+    
+    // Create enhanced edit profile modal with photo upload
+    const modal = document.createElement('div');
+    modal.className = 'fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex items-center justify-center z-50';
+    modal.innerHTML = `
+        <div class="glow-modal w-full max-w-lg p-6 m-4 max-h-[90vh] overflow-y-auto">
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold text-white font-orbitron glow-text-blue mb-4">
+                    <i class="fas fa-user-edit mr-2"></i>Edit Profile
+                </h3>
+                
+                <!-- Profile Photo Section -->
+                <div class="mb-6">
+                    <div class="relative inline-block">
+                        <div id="currentProfilePhoto" class="w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-2xl overflow-hidden" style="animation: pulseGlow 2s ease infinite;">
+                            ${getUserProfilePhoto() || '<i class="fas fa-user-tie text-white text-4xl"></i>'}
+                        </div>
+                        <button type="button" onclick="triggerPhotoUpload()" class="absolute bottom-2 right-2 w-10 h-10 bg-yellow-400 hover:bg-yellow-500 rounded-full flex items-center justify-center transition-all shadow-lg" style="animation: pulseGlow 1.5s ease infinite;">
+                            <i class="fas fa-camera text-black text-sm"></i>
+                        </button>
+                    </div>
+                    <input type="file" id="profilePhotoInput" accept="image/*" style="display: none;" onchange="handleProfilePhotoUpload(event)">
+                    <p class="text-gray-400 text-sm mt-2">Click the camera icon to upload your profile photo</p>
+                </div>
+            </div>
+            
+            <!-- Profile Information Form -->
+            <div class="space-y-4">
+                <div class="glow-container p-4">
+                    <label class="block text-gray-400 text-sm mb-2">Full Name</label>
+                    <input type="text" id="editFullName" value="${currentUser.fullname}" 
+                           class="glow-input w-full" style="background: #000000 !important; color: white !important;">
+                </div>
+                
+                <div class="glow-container p-4">
+                    <label class="block text-gray-400 text-sm mb-2">Email Address</label>
+                    <input type="email" id="editEmail" value="${currentUser.email}" 
+                           class="glow-input w-full" style="background: #000000 !important; color: white !important;" readonly>
+                    <p class="text-xs text-gray-500 mt-1">Email cannot be changed</p>
+                </div>
+                
+                <div class="glow-container p-4">
+                    <label class="block text-gray-400 text-sm mb-2">Location</label>
+                    <select id="editLocation" class="glow-input w-full" style="background: #000000 !important; color: white !important;">
+                        <option value="CHQ" ${currentUser.location === 'CHQ' ? 'selected' : ''}>CHQ</option>
+                        <option value="Akowonjo BU" ${currentUser.location === 'Akowonjo BU' ? 'selected' : ''}>Akowonjo BU</option>
+                        <option value="Abule Egba BU" ${currentUser.location === 'Abule Egba BU' ? 'selected' : ''}>Abule Egba BU</option>
+                        <option value="Ikeja BU" ${currentUser.location === 'Ikeja BU' ? 'selected' : ''}>Ikeja BU</option>
+                        <option value="Ikorodu BU" ${currentUser.location === 'Ikorodu BU' ? 'selected' : ''}>Ikorodu BU</option>
+                        <option value="Oshodi BU" ${currentUser.location === 'Oshodi BU' ? 'selected' : ''}>Oshodi BU</option>
+                        <option value="Shomolu BU" ${currentUser.location === 'Shomolu BU' ? 'selected' : ''}>Shomolu BU</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="flex space-x-4 mt-6">
+                <button onclick="cancelEditProfile()" class="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-3 px-4 rounded-lg font-semibold transition-all">
+                    <i class="fas fa-times mr-2"></i>Cancel
+                </button>
+                <button onclick="saveProfileChanges()" class="glow-button flex-1">
+                    <i class="fas fa-save mr-2"></i>Save Changes
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Close on backdrop click
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            cancelEditProfile();
+        }
+    });
 }
 
 // 🗺️ Enhanced Map Functions
@@ -1788,8 +1870,140 @@ function viewOnGoogleMaps(locationId) {
     initGoogleMapForLocation(location);
 }
 
+// 📸 Profile Photo Management Functions
+function triggerPhotoUpload() {
+    document.getElementById('profilePhotoInput').click();
+}
+
+function handleProfilePhotoUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+        showNotification('Please select a valid image file', 'error');
+        return;
+    }
+    
+    // Validate file size (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+        showNotification('Image size must be less than 5MB', 'error');
+        return;
+    }
+    
+    // Read and display the image
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const imageData = e.target.result;
+        
+        // Update the preview in the modal
+        const photoContainer = document.getElementById('currentProfilePhoto');
+        if (photoContainer) {
+            photoContainer.innerHTML = `<img src="${imageData}" alt="Profile Photo" class="w-full h-full object-cover rounded-full">`;
+        }
+        
+        // Store the image data temporarily for saving
+        window.tempProfilePhoto = imageData;
+        
+        showNotification('Photo uploaded successfully! Click "Save Changes" to apply.', 'success');
+    };
+    
+    reader.readAsDataURL(file);
+}
+
+function getUserProfilePhoto() {
+    const profilePhoto = localStorage.getItem(`profilePhoto_${currentUser.email}`);
+    return profilePhoto ? `<img src="${profilePhoto}" alt="Profile Photo" class="w-full h-full object-cover rounded-full">` : null;
+}
+
+function saveProfilePhoto(imageData) {
+    localStorage.setItem(`profilePhoto_${currentUser.email}`, imageData);
+}
+
+function cancelEditProfile() {
+    // Remove temporary photo data
+    delete window.tempProfilePhoto;
+    
+    // Close the modal
+    const modal = document.querySelector('.fixed.inset-0');
+    if (modal) {
+        modal.remove();
+    }
+}
+
+function saveProfileChanges() {
+    const fullName = document.getElementById('editFullName').value.trim();
+    const location = document.getElementById('editLocation').value;
+    
+    // Validate inputs
+    if (!fullName) {
+        showNotification('Please enter your full name', 'error');
+        return;
+    }
+    
+    // Update user data
+    currentUser.fullname = fullName;
+    currentUser.location = location;
+    
+    // Save profile photo if uploaded
+    if (window.tempProfilePhoto) {
+        saveProfilePhoto(window.tempProfilePhoto);
+        delete window.tempProfilePhoto;
+    }
+    
+    // Update BOTH localStorage keys to ensure persistence
+    localStorage.setItem('gisUser', JSON.stringify(currentUser));  // This is the key the login system uses
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));  // Keep this for compatibility
+    
+    // Update UI
+    updateProfileUI();
+    
+    // Close modal
+    const modal = document.querySelector('.fixed.inset-0');
+    if (modal) {
+        modal.remove();
+    }
+    
+    // Show success message and brief redirect notification
+    showNotification('Profile updated successfully!', 'success');
+    
+    // Optional: Brief redirect to refresh the page and show updated profile
+    setTimeout(() => {
+        showNotification('Refreshing dashboard...', 'info');
+        setTimeout(() => {
+            window.location.reload();
+        }, 1000);
+    }, 1500);
+}
+
+function updateProfileUI() {
+    // Update header profile card
+    const userName = document.getElementById('userName');
+    const userLocation = document.getElementById('userLocation');
+    
+    if (userName) userName.textContent = currentUser.fullname;
+    if (userLocation) userLocation.textContent = currentUser.location;
+    
+    // Update profile photo in header if exists
+    updateHeaderProfilePhoto();
+}
+
+function updateHeaderProfilePhoto() {
+    const profilePhoto = getUserProfilePhoto();
+    const profileCard = document.querySelector('.user-profile-card .w-12.h-12');
+    
+    if (profileCard && profilePhoto) {
+        profileCard.innerHTML = profilePhoto.replace('w-full h-full', 'w-full h-full');
+        profileCard.classList.remove('bg-gradient-to-br', 'from-blue-500', 'to-purple-600');
+    }
+}
+
 // Export new functions
 window.showUserProfile = showUserProfile;
 window.editProfile = editProfile;
 window.toggleMapView = toggleMapView;
 window.refreshMapData = refreshMapData;
+window.triggerPhotoUpload = triggerPhotoUpload;
+window.handleProfilePhotoUpload = handleProfilePhotoUpload;
+window.cancelEditProfile = cancelEditProfile;
+window.saveProfileChanges = saveProfileChanges;

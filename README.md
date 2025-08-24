@@ -15,7 +15,13 @@ A comprehensive **GIS Key Performance Indicator Dashboard** designed for Ikeja E
 
 ### 🔐 **Authentication & User Management**
 - Gmail-style login interface with **black dropdown styling**
-- User profile management with location selection
+- **👤 Profile Photo Upload**: Users can upload and display custom profile pictures
+- User profile management with location selection and **Edit Profile** functionality
+- **📸 Profile Personalization**: 
+  - Upload profile photos (JPG, PNG, GIF - max 5MB)
+  - Photos stored locally and persist across sessions
+  - Profile photos displayed in header and profile modal
+  - Camera icon for easy photo upload access
 - Session management with localStorage persistence
 - Role-based access control
 
@@ -108,6 +114,32 @@ A comprehensive **GIS Key Performance Indicator Dashboard** designed for Ikeja E
   - **General files**: Comprehensive file information display
 - **📱 Responsive Design**: Preview modal works seamlessly on all devices
 - **🔄 Smart Fallback**: Mock downloads available when original files aren't accessible
+
+### ✅ **Profile Photo Upload System**
+- **📸 Profile Photo Management**: Complete upload and display system for user profile pictures
+- **🎯 Easy Upload Interface**: Click camera icon in Edit Profile modal to upload photos
+- **✅ File Validation**: Supports image formats (JPG, PNG, GIF) with 5MB size limit
+- **💾 Persistent Storage**: Photos saved to localStorage and persist across sessions
+- **🔄 Full Session Persistence**: Profile photos remain after logout/login cycles
+- **🚀 Auto Dashboard Refresh**: After saving profile changes, dashboard refreshes to show updates
+- **🖼️ Dynamic Display**: Profile photos appear in:
+  - Header profile card with hover effects
+  - User profile modal with glow animations
+  - Edit Profile interface with upload preview
+- **🎨 Enhanced Styling**: Custom CSS animations and glow effects for profile photos
+- **📱 Responsive Design**: Profile photo system works seamlessly on all devices
+
+### ✅ **Location Management System Update**
+- **🏢 Standardized Business Units**: All location dropdowns now show consistent 7 options:
+  - **CHQ** (Corporate Headquarters)
+  - **Akowonjo BU** (Business Unit)
+  - **Abule Egba BU** (Business Unit)
+  - **Ikeja BU** (Business Unit)
+  - **Ikorodu BU** (Business Unit)
+  - **Oshodi BU** (Business Unit)
+  - **Shomolu BU** (Business Unit)
+- **🎯 Consistent Across Platform**: Same location options in login page, dashboard filters, profile editing, and KPI reporting
+- **🖤 Dark Theme Styling**: All location dropdowns maintain black background with white text styling
 
 ## 🎯 **KPI Structure by Role**
 
